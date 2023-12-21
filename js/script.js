@@ -12,7 +12,7 @@ function addNote() {
 	};
 
 	const noteElement = createNote(noteObject.id, noteObject.content);
-
+	('');
 	notesContainer.appendChild(noteElement);
 }
 
