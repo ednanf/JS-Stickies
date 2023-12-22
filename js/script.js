@@ -2,6 +2,7 @@
 const notesContainer = document.querySelector('#notes-container');
 const noteInput = document.querySelector('#note-content');
 const newNoteBtn = document.querySelector('.new-note');
+const searchInput = document.querySelector('#search-input');
 
 // Functions
 function showNotes() {
@@ -149,9 +150,42 @@ function getNotes() {
 	return orderedNotes;
 }
 
+function searchNotes(search) {
+	const searchResults = getNotes().filter((note) =>
+		note.content.includes(search)
+	);
+
+	if (search !== '') {
+		// If the search input is empty, clear the current notes
+		cleanNotes();
+
+		// And show only relevant notes
+		searchResults.forEach((note) => {
+			const noteElement = createNote(note.id, note.content);
+			notesContainer.appendChild(noteElement);
+		});
+		return;
+	}
+
+	// Show all notes again
+	cleanNotes();
+	showNotes();
+}
+
 // Events
 newNoteBtn.addEventListener('click', () => {
 	addNote();
+});
+
+searchInput.addEventListener('keyup', (e) => {
+	const search = e.target.value;
+	searchNotes(search);
+});
+
+noteInput.addEventListener('keydown', (e) => {
+	if (e.key === 'Enter') {
+		addNote();
+	}
 });
 
 // Initialization
