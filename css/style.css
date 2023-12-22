@@ -9,7 +9,7 @@ body {
 	background-color: #f3eff5;
 }
 
-/* Cabeçalho */
+/* Header */
 
 header {
 	background-color: #eae151;
@@ -174,12 +174,7 @@ header {
 	color: green;
 }
 
-/* .note.fixed {
-	border: 2px dashed #ddd92a;
-} */
-
 .note.fixed .bi-pin-angle {
-	/* background-color: #eae151;
-	border-radius: 500px; */
 	color: royalblue;
+	text-shadow: 0 0 2px rgba(65, 105, 225, 0.8);
 }

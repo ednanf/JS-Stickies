@@ -67,13 +67,17 @@ function createNote(id, content, fixed) {
 		element.classList.add('fixed');
 	}
 
-	// Eventos do elemento
+	// Note events (pin, delete and duplicate)
 	element.querySelector('.bi-pin-angle').addEventListener('click', () => {
 		toggleFixNote(id);
 	});
 
 	element.querySelector('.bi-x-lg').addEventListener('click', () => {
 		deleteNote(id, element);
+	});
+
+	element.querySelector('.bi-copy').addEventListener('click', () => {
+		copyNote(id);
 	});
 
 	return element;
@@ -96,6 +100,29 @@ function deleteNote(id, element) {
 	saveNotes(notes);
 
 	notesContainer.removeChild(element);
+}
+
+function copyNote(id) {
+	const notes = getNotes();
+	const targetNote = notes.filter((note) => note.id === id)[0];
+
+	const noteObject = {
+		id: generateId(),
+		content: targetNote.content,
+		fixed: false,
+	};
+
+	const noteElement = createNote(
+		noteObject.id,
+		noteObject.content,
+		noteObject.fixed
+	);
+
+	notesContainer.appendChild(noteElement);
+
+	notes.push(noteObject);
+
+	saveNotes(notes);
 }
 
 // Local storage
