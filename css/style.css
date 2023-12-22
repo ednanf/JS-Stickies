@@ -6,22 +6,19 @@
 }
 
 body {
-	background-color: #202124;
+	background-color: #fafdf6;
 }
 
 /* Cabeçalho */
 
 header {
-	border-bottom: 1px solid #ccc;
+	background-color: #eae151;
 	padding: 1rem 2rem;
 	color: #fff;
 	display: flex;
 	align-items: center;
 	justify-content: space-around;
-}
-
-header h1 > i {
-	color: #eeefa8;
+	box-shadow: 10px 10px 10px rgba(255, 255, 255, 1);
 }
 
 #search-container {
@@ -31,7 +28,7 @@ header h1 > i {
 }
 
 #search-input {
-	background-color: #525356;
+	background-color: #fafdf6;
 	border-radius: 5px;
 	border: none;
 	padding: 10px;
@@ -41,21 +38,22 @@ header h1 > i {
 }
 
 #search-input::placeholder {
-	color: #ddd;
+	color: #a2a2a2;
 }
 
 #export-notes {
-	background-color: #333;
+	background-color: #eae151;
 	border: 2px solid #fff;
 	border-radius: 4px;
-	color: #fff;
+	color: #fafdf6;
 	padding: 5px 15px;
 	cursor: pointer;
 	transition: 0.4s;
+	font-weight: 900;
 }
 
 #export-notes:hover {
-	color: #333;
+	color: #ddd92a;
 	background-color: #fff;
 }
 
@@ -76,14 +74,20 @@ header h1 > i {
 #new-note-container input {
 	flex: 1;
 	background-color: transparent;
-	border: 1px solid #525356;
-	color: #fff;
+	border: 1px solid #2d2a32;
+	color: #fafdf6;
 }
 
 #new-note-container button {
 	cursor: pointer;
-	background-color: #333;
-	color: #fff;
+	background-color: transparent;
+	color: #2d2a32;
+	border: 1px solid #2d2a32;
+	transition: 0.4s;
+}
+
+#new-note-container button:hover {
+	border: 1px solid #eae151;
 }
 
 /* Notes */
@@ -97,17 +101,19 @@ header h1 > i {
 .note {
 	min-height: 200px;
 	padding: 1rem;
-	border: 1px solid #ccc;
-	background-color: #202124;
-	border-radius: 10px;
-	color: #fff;
+	background-color: #eeefa8;
+	color: #2d2a32;
 	position: relative;
+	box-shadow:
+		0px 13px 27px -5px rgba(50, 50, 93, 0.5),
+		0px 8px 16px -8px rgba(0, 0, 0, 0.7);
 }
 
 .note textarea {
 	background-color: transparent;
 	resize: none;
-	color: #fff;
+	color: #2d2a32;
+	font-size: 16px;
 	border: none;
 	height: 100%;
 	outline: none;
@@ -118,10 +124,18 @@ header h1 > i {
 	left: 10px;
 	bottom: 10px;
 	font-size: 1.2rem;
-	background-color: #333;
+	background-color: #eeefa8;
 	cursor: pointer;
 	padding: 5px;
 	border-radius: 3px;
+}
+
+.note .bi-pin-angle:hover {
+	color: royalblue;
+}
+
+.note .bi-pin-angle:active {
+	color: royalblue;
 }
 
 .note:hover > i {
@@ -145,11 +159,14 @@ header h1 > i {
 	top: 40px;
 }
 
-.note .bi-x-lg:hover,
+.note .bi-x-lg:hover {
+	color: red;
+}
+
 .note .bi-copy:hover {
-	color: #fff;
+	color: green;
 }
 
 .note.fixed {
-	background-color: #3c3c3f;
+	border: 1px dotted royalblue;
 }
