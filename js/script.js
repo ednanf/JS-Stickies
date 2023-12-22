@@ -3,6 +3,7 @@ const notesContainer = document.querySelector('#notes-container');
 const noteInput = document.querySelector('#note-content');
 const newNoteBtn = document.querySelector('.new-note');
 const searchInput = document.querySelector('#search-input');
+const exportBtn = document.querySelector('#export-notes');
 
 // Functions
 function showNotes() {
@@ -172,6 +173,25 @@ function searchNotes(search) {
 	showNotes();
 }
 
+function exportData() {
+	const notes = getNotes();
+
+	// Create CSV file
+	const csvString = [
+		['ID', 'Content', 'Fixed?'],
+		...notes.map((note) => [note.id, note.content, note.fixed]),
+	]
+		.map((e) => e.join(','))
+		.join('\n');
+
+	// Download
+	const element = document.createElement('a');
+	element.href = 'data:text/csv;charset=utf-8,' + encodeURI(csvString);
+	element.target = '_blank';
+	element.download = 'notes.csv';
+	element.click();
+}
+
 // Events
 newNoteBtn.addEventListener('click', () => {
 	addNote();
@@ -186,6 +206,10 @@ noteInput.addEventListener('keydown', (e) => {
 	if (e.key === 'Enter') {
 		addNote();
 	}
+});
+
+exportBtn.addEventListener('click', () => {
+	exportData();
 });
 
 // Initialization
