@@ -47,11 +47,8 @@ function createNote(id, content, fixed) {
 
 	const textarea = document.createElement('textarea');
 	textarea.value = content;
-
 	textarea.placeholder = 'New note';
-
 	textarea.name = 'note-textarea';
-
 	element.appendChild(textarea);
 
 	const pinIcon = document.createElement('i');
@@ -75,6 +72,10 @@ function createNote(id, content, fixed) {
 		toggleFixNote(id);
 	});
 
+	element.querySelector('.bi-x-lg').addEventListener('click', () => {
+		deleteNote(id, element);
+	});
+
 	return element;
 }
 
@@ -87,6 +88,14 @@ function toggleFixNote(id) {
 	saveNotes(notes);
 
 	showNotes();
+}
+
+function deleteNote(id, element) {
+	const notes = getNotes().filter((note) => note.id !== id);
+
+	saveNotes(notes);
+
+	notesContainer.removeChild(element);
 }
 
 // Local storage
