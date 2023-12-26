@@ -15,4 +15,4 @@ The stickies are stored using local storage and can be exported as CSV.
 ## Credits
 
 - Icons: [Bootstrap Icons](https://icons.getbootstrap.com/)
-- Font: Lato on [Google Fonts](https://fonts.google.com/specimen/Lato?query=Lato)
+- Font: Lato by Łukasz Dziedzic on [Google Fonts](https://fonts.google.com/specimen/Lato?query=Lato)
